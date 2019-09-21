@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JavaScript Store</title>
+  </head>
+  <body onload="test()">
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+      </ul>
+      <button onclick="logOutAdmin()">Log Out</button>
+    </nav>
+    Product Name: <input type="text" id="name" /><br /><br />
+    Product Description: <input type="text" id="description" /><br /><br />
+    Product Price: <input type="text" id="price" /><br /><br />
+    Product Amount: <input type="text" id="amount" /><br /><br />
+    Product Image: <input type="text" id="src" /><br /><br />
+    <input
+      type="button"
+      id="button"
+      onclick="createProduct()"
+      value="Submit"
+    /><br />
+    <p id="output"></p>
+  </body>
+  <script src="admin.js"></script>
+
+  <!-- <script src="main.js"></script> -->
+  <!-- <script src="localstorage.js"></script> -->
+
+  <!-- <script src="data.js"></script> -->
+</html>
