@@ -1,36 +1,30 @@
+// new User
+const username = document.getElementById('emailNew');
+const registeredPassword = document.getElementById('passwordNew');
+
+// current User
 const email = document.getElementById('emailInput');
 const password = document.getElementById('passwordInput');
 
-const testObject = [
-  {
-    username: 'user@gmail.com',
-    password: 'user'
-  },
-  {
-    username: 'user2@gmail.com',
-    password: 'user'
-  }
-];
-localStorage.setItem('testObject', JSON.stringify(testObject));
-const usersArray = JSON.parse(localStorage.getItem('testObject'));
-console.log(usersArray);
+// checking if any user is already stored in Local Storafe
+let usersArray = localStorage.getItem('newUser')
+  ? JSON.parse(localStorage.getItem('newUser'))
+  : [];
+localStorage.setItem('newUser', JSON.stringify(usersArray));
 
-// to działa jak mam z hardcodowane narazie probowalam wysłac cały obiekt to local storage i sciagnac go
-// zeby sprawdzic czy autentykacja zadziala
-// glowny goal jest taki ze zrobie w index.html cos w stylu rejestracji
-// i zrobie push to tej testObject i pozniej z tymi danymi bedzie mozna się logować
-
-// ta array sobie zrobilam wczesniej zeby w ogole sprobowac walicaji
-// const usersArray = [
-//   {
-//     username: 'user@gmail.com',
-//     password: 'user'
-//   },
-//   {
-//     username: 'user2@gmail.com',
-//     password: 'user'
-//   }
-// ];
+function initialInputValue() {
+  (username.value = ''), (registeredPassword.value = '');
+}
+function User(username, registeredPassword) {
+  (this.username = username), (this.registeredPassword = registeredPassword);
+}
+function createUser() {
+  event.preventDefault();
+  let user = new User(username.value, registeredPassword.value);
+  usersArray.push(user);
+  localStorage.setItem('newUser', JSON.stringify(usersArray));
+  initialInputValue();
+}
 
 document
   .querySelector('#submitCredentials')
@@ -39,20 +33,25 @@ document
     const emailText = email.value;
     const passwordText = password.value;
     for (i = 0; i < usersArray.length; i++) {
+      // if login as an admin
       if (passwordText == 'admin' && emailText == 'admin@gmail.com') {
         localStorage.setItem('adminLoggedIn', true);
         localStorage.setItem('userLoggedIn', false);
-        return (window.location.href = 'admin.html');
-      } else if (
-        emailText == usersArray[i].username &&
-        passwordText == usersArray[i].password
-      ) {
-        console.log('LoggedIn');
-        localStorage.setItem('userLoggedIn', true);
-        localStorage.setItem('adminLoggedIn', false);
-        return (window.location.href = 'products.html');
+        window.location.href = 'admin.html';
+        return;
       }
-
+      for (i = 0; i < usersArray.length; i++) {
+        if (
+          emailText == usersArray[i].username &&
+          passwordText == usersArray[i].registeredPassword
+        ) {
+          console.log('LoggedIn');
+          localStorage.setItem('userLoggedIn', true);
+          localStorage.setItem('adminLoggedIn', false);
+          window.location.href = 'products.html';
+          return;
+        }
+      }
       alert('Access denied! Incorrect credentials!');
       return false;
     }
