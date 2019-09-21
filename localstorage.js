@@ -32,18 +32,26 @@ function getProduct() {
   if (storedValue) {
     document.getElementById('output').innerHTML = storedValue
       .map(
-        item =>
-          `<div>
+        (item, index) =>
+          `<div id=${index}>
       <h4>${item.name}</h4>
       <p>${item.description}</p>
       <p>${item.price}</p>
       <p>${item.amount}</p>
       <p>${item.src}</p>
-      <button onclick="deleteItem()">delete</button>
+      <button onclick="editItem(${index})">edit</button>
+      <button onclick="deleteItem(${index})">delete</button>
       </div>`
       )
       .join('');
   }
+}
+
+function deleteItem(index) {
+  console.log('hello');
+  productsArray.splice(index, 1);
+  localStorage.setItem('products', JSON.stringify(productsArray));
+  getProduct();
 }
 function initialInputValue() {
   (name.value = ''),
@@ -77,6 +85,3 @@ window.onload = getProduct();
 
 let id = data[0];
 console.log(id);
-function deleteItem() {
-  localStorage.splice(id, 1);
-}
