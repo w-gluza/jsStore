@@ -1,7 +1,7 @@
 const email = document.getElementById('emailInput');
 const password = document.getElementById('passwordInput');
 
-const usersArray = [
+const testObject = [
   {
     username: 'user@gmail.com',
     password: 'user'
@@ -11,6 +11,27 @@ const usersArray = [
     password: 'user'
   }
 ];
+localStorage.setItem('testObject', JSON.stringify(testObject));
+const usersArray = JSON.parse(localStorage.getItem('testObject'));
+console.log(usersArray);
+
+// to działa jak mam z hardcodowane narazie probowalam wysłac cały obiekt to local storage i sciagnac go
+// zeby sprawdzic czy autentykacja zadziala
+// glowny goal jest taki ze zrobie w index.html cos w stylu rejestracji
+// i zrobie push to tej testObject i pozniej z tymi danymi bedzie mozna się logować
+
+// ta array sobie zrobilam wczesniej zeby w ogole sprobowac walicaji
+// const usersArray = [
+//   {
+//     username: 'user@gmail.com',
+//     password: 'user'
+//   },
+//   {
+//     username: 'user2@gmail.com',
+//     password: 'user'
+//   }
+// ];
+
 document
   .querySelector('#submitCredentials')
   .addEventListener('click', function(event) {
