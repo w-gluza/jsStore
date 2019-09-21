@@ -38,5 +38,5 @@ document
   });
 function logOutUser() {
   localStorage.setItem('userLoggedIn', false);
-  return (window.location.href = 'login.html');
+  return (window.location.href = 'index.html');
 }
