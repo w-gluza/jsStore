@@ -1,0 +1,12 @@
+.main__login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.form__logIn,
+.form__register {
+  display: grid;
+  width: max-content;
+  /* grid-template-columns: */
+}

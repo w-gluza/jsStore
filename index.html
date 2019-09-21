@@ -5,30 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="admin.html">Admin</a></li>
-        <li><a href="products.html">Products</a></li>
-      </ul>
-    </nav>
-    <form>
-      <label for="emailInput">Email:</label>
-      <input id="emailInput" type="email" required />
-      <label for="passwordInput">Password:</label>
-      <input id="passwordInput" type="password" required />
-      <button id="submitCredentials">Submit</button>
-    </form>
+    <main class="main__login">
+      <!-- <nav>
+        <ul>
+          <li><a href="admin.html">Admin</a></li>
+          <li><a href="products.html">Products</a></li>
+        </ul>
+      </nav> -->
+      <form class="form__logIn">
+        <label for="emailInput">Email:</label>
+        <input id="emailInput" type="email" required />
+        <label for="passwordInput">Password:</label>
+        <input id="passwordInput" type="password" required />
+        <button type="submit" id="submitCredentials">Log In</button>
+      </form>
 
-    <form>
-      <label for="emailNew">Email Register:</label>
-      <input id="emailNew" type="email" required />
-      <label for="passwordNew">Password Register:</label>
-      <input id="passwordNew" type="password" required />
-      <button onclick="createUser()">Submit</button>
-    </form>
-
+      <form class="form__register">
+        <label for="fullName">Full Name:</label>
+        <input id="fullName" type="text" required />
+        <label for="emailNew">Email Register:</label>
+        <input id="emailNew" type="email" required />
+        <label for="passwordNew">Password Register:</label>
+        <input id="passwordNew" type="password" required />
+        <label for="phoneNumber">Phone Number:</label>
+        <input id="phoneNumber" type="number" required />
+        <label for="address">Address:</label>
+        <input id="address" type="text" required />
+        <button type="submit" onclick="createUser()">Sign Up</button>
+      </form>
+    </main>
     <script src="main.js"></script>
   </body>
 </html>
