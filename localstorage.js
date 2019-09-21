@@ -1,6 +1,23 @@
+let initialProductsArray = [
+  {
+    name: 'Predefined Name',
+    description: 'Predefined Desc',
+    price: '999',
+    amount: '1',
+    src: 'https'
+  },
+  {
+    name: 'Predefined Name 2',
+    description: 'Predefined Desc 2',
+    price: '666',
+    amount: '2',
+    src: 'http'
+  }
+];
+
 let productsArray = localStorage.getItem('products')
   ? JSON.parse(localStorage.getItem('products'))
-  : [];
+  : [...initialProductsArray];
 
 localStorage.setItem('products', JSON.stringify(productsArray));
 const data = JSON.parse(localStorage.getItem('products'));
